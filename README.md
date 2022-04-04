@@ -2,6 +2,37 @@
 
 API Rest made with Java and SpringBoot.
 
+
+## API Documentation
+
+- **Index** https://h2-api-rest-video-games.herokuapp.com
+- **ENDPOINT** https://h2-api-rest-video-games.herokuapp.com/video-games
+
+
+## Endpoints Documentation
+
+- **GET** video games list endpoint: [mywebdomain/video-games](https://h2-api-rest-video-games.herokuapp.com/video-games)
+- **GET** video game by id endpoint: [mywebdomain/video-games/{id}](https://h2-api-rest-video-games.herokuapp.com/video-games/1)
+- **GET** video games list sort by genre endpoint: [mywebdomain/video-games/genre/{genre}](https://h2-api-rest-video-games.herokuapp.com/video-games/genre/Souls-like)
+- **GET** video games list count by genre endpoint: [mywebdomain/video-games/count/{genre}](https://h2-api-rest-video-games.herokuapp.com/video-games/count/Souls-like)
+- **POST** video game endpoint: [mywebdomain/video-games](https://h2-api-rest-video-games.herokuapp.com/video-games)
+- **PUT** video game endpoint: [mywebdomain/video-games](https://h2-api-rest-video-games.herokuapp.com/video-games)
+- **DELETE** video game endpoint: [mywebdomain/video-games/{id}](https://h2-api-rest-video-games.herokuapp.com/video-games/6)
+
+
+## JSON Documentation
+
+```
+{
+    "idVideoGame": 7,
+    "name": "Fez",
+    "genre": "Platformer",
+    "price": 9.99,
+    "criticEvaluation": 9.1
+}
+```
+
+
 ## Getting started
 
 To make it easy for you to get started with GitLab, here's a list of recommended next steps.
