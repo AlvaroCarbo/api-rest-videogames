@@ -16,6 +16,7 @@ import java.util.List;
 public class VideoGamesController {
     private final VideoGamesService videoGamesService;
 
+
     @CrossOrigin(origins = "http://localhost:9001")
     @GetMapping("/video-games")
     public ResponseEntity<?> listVideoGames(@RequestParam(value = "price", required = false) String price) {

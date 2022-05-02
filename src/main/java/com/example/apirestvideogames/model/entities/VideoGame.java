@@ -1,8 +1,6 @@
 package com.example.apirestvideogames.model.entities;
 
 import lombok.Data;
-import org.springframework.aop.interceptor.SimpleTraceInterceptor;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
