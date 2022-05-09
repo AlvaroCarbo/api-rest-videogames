@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
@@ -26,9 +27,7 @@ public class ConfiguracioSeguretatWeb extends WebSecurityConfigurerAdapter {
         web.ignoring().anyRequest();
     }*/
 
-
-
-    @Override
+/*    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
@@ -36,13 +35,12 @@ public class ConfiguracioSeguretatWeb extends WebSecurityConfigurerAdapter {
                 .withUser("Alvaro")
                 .password(xifrat.encode("secret"))
                 .roles("ADMIN");
-    }
-
-       /* @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(elmeuUserDetailsService).passwordEncoder(xifrat);
     }*/
 
+     @Override
+     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+     auth.userDetailsService(elmeuUserDetailsService).passwordEncoder(xifrat);
+     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors() //amb aquesta línia evitem la configuració custom del cors en un fitxer a part
@@ -51,7 +49,7 @@ public class ConfiguracioSeguretatWeb extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(elmeuEntryPoint)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/me/**").hasRole("ADMIN") //per fer proves del forbidden
+                .antMatchers(HttpMethod.GET, "/me/**").hasRole("USER")/*.hasRole("ADMIN")*/ //per fer proves del forbidden
                 .antMatchers(HttpMethod.GET, "/users/**", "/videojocs/**").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/users/**", "/videojocs/**").hasRole("USER")
                 .antMatchers(HttpMethod.PUT, "/videojocs/**").hasRole("USER")
@@ -62,4 +60,21 @@ public class ConfiguracioSeguretatWeb extends WebSecurityConfigurerAdapter {
         // .csrf().disable();
     }
 
+/*    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .httpBasic()
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+//per poder accedir al h2-console
+                //  .authorizeRequests().antMatchers("/").permitAll().and()
+                //  .authorizeRequests().antMatchers("/h2-console/**").permitAll()
+                // .and()
+                .csrf().disable()
+                // .headers().frameOptions().disable()
+                // .and()
+                .authorizeRequests()
+                .anyRequest().authenticated();
+    }*/
 }
