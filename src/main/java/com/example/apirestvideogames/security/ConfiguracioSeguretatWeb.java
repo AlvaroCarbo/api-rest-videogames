@@ -50,11 +50,11 @@ public class ConfiguracioSeguretatWeb extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/me/**").hasRole("USER")/*.hasRole("ADMIN")*/ //per fer proves del forbidden
-                .antMatchers(HttpMethod.GET, "/users/**", "/videojocs/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/users/**", "/videojocs/**").hasRole("USER")
-                .antMatchers(HttpMethod.PUT, "/videojocs/**").hasRole("USER")
-                .antMatchers(HttpMethod.DELETE, "/videojocs/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/videojocs/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/users/**", "/video-games/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/users/**", "/video-games/**").hasRole("USER")
+                .antMatchers(HttpMethod.PUT, "/video-games/**").hasRole("USER")
+                .antMatchers(HttpMethod.DELETE, "/video-games/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/video-games/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated();
         // .and()
         // .csrf().disable();
